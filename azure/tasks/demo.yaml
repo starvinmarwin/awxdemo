@@ -1,0 +1,12 @@
+---
+- name: Create resource group
+  azure_rm_resourcegroup:
+    auth_source: env
+    name: ansible4-rg
+    location: swedencentral
+    tags:
+      creation: ansible
+  register: rg
+  
+- debug:
+    var: rg
