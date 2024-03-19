@@ -10,7 +10,6 @@
       https: true
       validate_certs: false
       
-  name: Onboard SVM
   tasks:
   - name:  Create Volume
     na_ontap_volume:
@@ -20,6 +19,7 @@
       size_unit: "{{ item.volume_size_unit }}"
       vserver: "{{ item.vserver }}"
       aggregate_name: "{{ item.aggregate_name }}"
-      policy: "{{ policy }}"
+      # policy: "{{ policy }}"
     loop:
-      - { volume: 'vol5', volume_size: '20', volume_size_unit: 'mb', vserver: 'ansibleSVM', aggregate_name: 'ssd01' }
+      - { volume: 'vol01', volume_size: '20', volume_size_unit: 'mb', vserver: 'semsi', aggregate_name: 'ssd01' 
+      - { volume: 'vol01', volume_size: '20', volume_size_unit: 'mb', vserver: 'semsi', aggregate_name: 'ssd01' }
