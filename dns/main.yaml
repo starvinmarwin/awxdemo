@@ -1,1 +1,10 @@
-csc
+---
+- hosts: localhost
+  collections:
+    - azure.azcollection
+  gather_facts:
+
+  tasks:
+    - name: Check that dns is working
+      ansible.builtin.command:
+        cmd: nslookup www.dn.se
