@@ -7,4 +7,4 @@
   tasks:
     - name: Check that dns is working
       ansible.builtin.command:
-        cmd: unzip --version
+        cmd: /usr/bin/unzip --version
