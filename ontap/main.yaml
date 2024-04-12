@@ -4,7 +4,7 @@
   - netapp.ontap
   module_defaults:
     group/netapp.ontap.netapp_ontap:
-      hostname: 10.5.160.212
+      hostname: "{{ ontap_system }}"
       username: "{{ netapp_username }}"
       password: "{{ netapp_password }}"
       https: true
