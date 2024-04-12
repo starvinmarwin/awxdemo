@@ -1,0 +1,29 @@
+---
+  - name: Gather facts about which aggregate currently has the most space available
+    na_ontap_info:
+      hostname: "{{ ontap_system }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      gather_subset: aggregate_info
+      query:
+          aggr-attributes:
+            aggr-raid-attributes:
+              is-root-aggregate: "false"
+    register: netapp_info
+  - debug:
+      msg: "{{ (netapp_info.ontap_info.aggregate_info[item].aggr_space_attributes.size_available) | int / 1000 }}"
+    with_items: "{{ netapp_info.ontap_info.aggregate_info }}"
+    register: aggr_space
+
+  - debug: var=aggr_space
+
+  - debug: msg="item {{ item }}"
+    loop: "{{ aggr_space.results | sort(attribute='msg') }}"
+
+  - set_fact: maxitem="{{ item }}"
+    loop: "{{ aggr_space.results | sort(attribute='msg') }}"
+
+  - debug: 
+      var: maxitem.item
+      
+  - set_fact: aggr_most_space="{{ maxitem.item }}"
