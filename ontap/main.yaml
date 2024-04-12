@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   collections:
   - netapp.ontap
   module_defaults:
