@@ -16,7 +16,7 @@
       - create
     netapp.ontap.na_ontap_snapshot:
       state: present
-      snapshot: "snap1"
+      snapshot: "mittdemosnap"
       volume: "vol01"
       comment: "i am a snaphot"
       expiry_time: "2024-05-05T14:00:00-05:00"
