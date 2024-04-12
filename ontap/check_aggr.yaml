@@ -1,4 +1,16 @@
 ---
+- hosts: localhost
+  collections:
+  - netapp.ontap
+  module_defaults:
+    group/netapp.ontap.netapp_ontap:
+      hostname: "{{ ontap_system }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+      
+  tasks:
   - name: Gather facts about which aggregate currently has the most space available
     na_ontap_info:
       hostname: "{{ ontap_system }}"
