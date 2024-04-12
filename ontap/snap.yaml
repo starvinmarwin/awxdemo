@@ -1,17 +1,23 @@
-
-
-
-
-- name: create SnapShot
-  tags:
-    - create
-  netapp.ontap.na_ontap_snapshot:
-    state: present
-    snapshot: "{{ snapshot name }}"
-    volume: "{{ vol name }}"
-    comment: "i am a comment"
-    expiry_time: "2022-02-04T14:00:00-05:00"
-    vserver: "{{ vserver name }}"
-    username: "{{ netapp username }}"
-    password: "{{ netapp password }}"
-    hostname: "{{ netapp hostname }}"
+---
+- hosts: localhost
+  collections:
+  - netapp.ontap
+  module_defaults:
+    group/netapp.ontap.netapp_ontap:
+      hostname: "{{ ontap_system }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+      
+  tasks:
+  - name: create SnapShot
+    tags:
+      - create
+    netapp.ontap.na_ontap_snapshot:
+      state: present
+      snapshot: "snap1"
+      volume: "vol01"
+      comment: "i am a comment"
+      expiry_time: "2024-05-04T14:00:00-05:00"
+      vserver: "semsi"
