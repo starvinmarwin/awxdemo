@@ -18,6 +18,6 @@
       state: present
       snapshot: "snap1"
       volume: "vol01"
-      comment: "i am a comment"
+      comment: "i am a comment again"
       expiry_time: "2024-05-04T14:00:00-05:00"
       vserver: "semsi"
