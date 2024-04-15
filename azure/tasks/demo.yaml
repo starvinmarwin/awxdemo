@@ -1,6 +1,6 @@
 ---
 - name: Create resource group
-  azure.azcollection.azure_rm_resource:
+  azure.azcollection.azure_rm_resourcegroup:
     auth_source: env
     name: ansible4-rg
     location: swedencentral
