@@ -5,4 +5,4 @@
   tasks:
     - name: Check python version
       ansible.builtin.command:
-        cmd: python3 --version
+        cmd: ping www.dn.se
