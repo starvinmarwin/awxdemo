@@ -1,0 +1,5 @@
+---
+- cisco.nxos.nxos_ntp:
+    state: present
+    server: 10.55.10.10
+    prefer: enabled
