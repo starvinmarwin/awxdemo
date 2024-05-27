@@ -1,5 +1,11 @@
 ---
-- hosts: fabric_a
-  gather_facts: false
-  roles:
-    - fabric_a
+- hosts: localhost
+  collections:
+  - cisco.nxos
+
+  vars:
+    ansible_connection: httpapi
+    ansible_httpapi_use_ssl: yes
+    ansible_httpapi_validate_certs: no
+  tasks:
+    - include_tasks: tasks/ntp_config.yaml
