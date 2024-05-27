@@ -7,5 +7,10 @@
     ansible_connection: httpapi
     ansible_httpapi_use_ssl: yes
     ansible_httpapi_validate_certs: no
+    ansible_network_os: nxos
+    ansible_httpapi_port: 8443
+    ansible_user: "{{ nxos_user}}"
+    ansible_httpapi_pass: "{{ nxos_password }}"
+    
   tasks:
     - include_tasks: tasks/ntp_config.yaml
