@@ -1,0 +1,2 @@
+---
+- import_tasks: ntp_config.yaml
