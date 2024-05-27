@@ -3,3 +3,6 @@
     state: present
     server: 10.55.10.10
     prefer: enabled
+    username: "{{ nxos_user }}"
+    password: "{{ nxos_password }}"
+    host: "{{ nxos_host }}"
