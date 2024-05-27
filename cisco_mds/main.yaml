@@ -11,7 +11,7 @@
     ansible_httpapi_validate_certs: no
     ansible_network_os: nxos
     ansible_httpapi_port: 8443
-    ansible_user: "{{ nxos_user}}"
+    ansible_user: "{{ nxos_user }}"
     ansible_httpapi_pass: "{{ nxos_password }}"
     
   tasks:
