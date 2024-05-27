@@ -1,5 +1,5 @@
 ---
-- hosts: 10.5.161.16
+- hosts: fabric_a
   gather_facts: false
   roles:
     - fabric_a
