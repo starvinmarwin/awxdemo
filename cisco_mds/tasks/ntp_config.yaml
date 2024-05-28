@@ -1,6 +1,6 @@
 ---
 - name:  Set NTP on Cisco fabric
-    cisco.nxos.nxos_ntp:
+  cisco.nxos.nxos_ntp:
     state: present
     server: 10.55.10.10
     prefer: enabled
