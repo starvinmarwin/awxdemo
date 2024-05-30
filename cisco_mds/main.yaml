@@ -1,5 +1,5 @@
 ---
-- hosts: 10.5.161.16
+- hosts: localhost
   collections:
   - cisco.nxos
   
@@ -15,4 +15,4 @@
     ansible_httpapi_pass: "{{ nxos_password }}"
     
   tasks:
-    - include_tasks: tasks/dns_config.yaml
+    - include_tasks: tasks/zoning.yaml
