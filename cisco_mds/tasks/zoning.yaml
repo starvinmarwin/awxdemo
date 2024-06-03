@@ -1,14 +1,14 @@
-- name: Test that zone/zoneset module works
+- name: Apply zone members and config
   cisco.nxos.nxos_zone_zoneset:
     zone_zoneset_details:
       - mode: basic
         vsan: 1251
         zone:
         - members:
-          - pwwn: 62:62:62:62:12:12:12:12
+          - pwwn: '62:62:62:62:12:12:12:12'
           name: host1
         - members:
-          - pwwn: 10:11:11:11:11:11:11:11
+          - pwwn: '10:11:11:11:11:11:11:11'
           name: host2
         zoneset:
         - action: activate
