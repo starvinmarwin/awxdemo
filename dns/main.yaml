@@ -5,4 +5,4 @@
   tasks:
     - name: Check python version
       ansible.builtin.command:
-        cmd: dig www.dn.se
+        cmd: dig login.microsoftonline.com
