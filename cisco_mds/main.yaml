@@ -15,4 +15,5 @@
     ansible_httpapi_pass: "{{ nxos_password }}"
     
   tasks:
+    - include_tasks: tasks/dns_config.yaml
     - include_tasks: tasks/zoning.yaml
