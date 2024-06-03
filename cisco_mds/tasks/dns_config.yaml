@@ -3,4 +3,3 @@
     name_servers:
     - 8.8.8.8
     - 8.8.4.4
-    hostname: "{{ nxos_host }}"
