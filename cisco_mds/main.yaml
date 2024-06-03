@@ -1,5 +1,5 @@
 ---
-- hosts: fabric_a
+- hosts: localhost
   collections:
   - cisco.nxos
   
