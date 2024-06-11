@@ -7,8 +7,20 @@
   - name: Get whoami information
     ansible.windows.win_whoami:
 
-  - name: Check if 7-Zip is installed
-    win_reg_stat:
-      name: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{23170F69-40C1-2702-1701-000001000000}
-    register: output
-  
+  - name: Create local group to contain new users
+    win_group:
+      name: Ansibledemo_group
+      description: Ansible demo
+
+  - name: Create local user
+    win_user:
+      name: '{{ item.name }}'
+      password: '{{ item.password }}'
+      groups: LocalGroup
+      update_password: false
+      password_never_expires: true
+    loop:
+    - name: Ansibledemo1
+      password: "{{ user_password }}"
+    - name: Ansibledemo2
+      password: "{{ user_password }}"
