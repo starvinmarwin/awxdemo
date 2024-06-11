@@ -1,2 +1,8 @@
-- name: Get whoami information
-  ansible.windows.win_whoami:
+---
+- hosts: localhost
+  collections:
+  - anisble.windows
+
+  tasks:
+  - name: Get whoami information
+    ansible.windows.win_whoami
