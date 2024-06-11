@@ -7,12 +7,12 @@
   - name: Get whoami information
     ansible.windows.win_whoami:
 
-  - name: Create local group to contain new users
+  - name: Create a local group
     win_group:
       name: Ansibledemo_group
       description: Ansible demo
 
-  - name: Create local user
+  - name: Create some local users 
     win_user:
       name: '{{ item.name }}'
       password: '{{ item.password }}'
