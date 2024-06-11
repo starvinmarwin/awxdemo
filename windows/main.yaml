@@ -17,8 +17,9 @@
       name: '{{ item.name }}'
       password: '{{ item.password }}'
       groups: LocalGroup
-      update_password: false
-      password_never_expires: true
+      update_password: Always
+      password_never_expires: false
+      account_locked: true
     loop:
     - name: Ansibledemo1
       password: "{{ user_password }}"
