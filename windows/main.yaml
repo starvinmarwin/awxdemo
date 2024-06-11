@@ -7,7 +7,7 @@
   - name: Get whoami information
     ansible.windows.win_whoami:
 
-  - name: Check if 7-Zip is already installed
+  - name: Check if 7-Zip is installed
     win_reg_stat:
       name: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{23170F69-40C1-2702-1701-000001000000}
     register: 7zip_installed
