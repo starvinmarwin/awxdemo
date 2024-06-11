@@ -22,6 +22,6 @@
       account_locked: no
     loop:
     - name: Ansibledemo1
-      password: "{{ ansible_windows_password }}"
+      password: "{{ user_password }}"
     - name: Ansibledemo2
-      password: "{{ ansible_windows_password }}"
+      password: "{{ user_password }}"
