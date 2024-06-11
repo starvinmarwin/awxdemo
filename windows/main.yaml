@@ -1,5 +1,5 @@
 ---
-- hosts: 10.5.161.69
+- hosts: all
   collections:
   - anisble.windows
 
