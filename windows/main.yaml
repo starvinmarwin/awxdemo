@@ -25,3 +25,5 @@
       password: "{{ user_password }}"
     - name: Ansibledemo2
       password: "{{ user_password }}"
+    - name: Ansibledemo3
+      password: "{{ user_password }}"
