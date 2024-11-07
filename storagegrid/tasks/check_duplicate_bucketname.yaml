@@ -1,0 +1,15 @@
+--- 
+  - name: Return fact True if bucket name is free
+    set_fact:
+      is_bucketname_available: "True"   
+    when: bucket_name not in bucketlist_final
+  
+  - name: Return fact False if bucket name is not free
+    set_fact:
+      is_bucketname_available: "False"   
+    when: bucket_name in bucketlist_final
+  
+  - name: Fail if bucketname is taken
+    fail:
+      msg: "Bucketname is already taken, please assign a different bucketname!"
+    when: is_bucketname_available != True
