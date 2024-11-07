@@ -1,0 +1,23 @@
+- name: Get user authorization token for Tenant
+  uri:
+    url: "{{ grid_admin_base_url }}/api/v3/authorize"
+    method: POST
+    body: {
+      "accountId": "{{ tenant_id }}",
+      "username": "{{ storagegrid_login_username }}",
+      "password": "{{ storagegrid_login_password }}",
+      "cookie": false,
+      "csrfToken": false
+    }
+    body_format: json
+    validate_certs: false
+  register: auth
+    
+- name: Create the bucket
+  netapp.storagegrid.na_sg_org_container:
+    validate_certs: false
+    api_url: "{{ grid_admin_base_url }}"
+    auth_token: "{{ auth.json.data }}"
+    state: present
+    region: eu-swe-1
+    name: "{{ bucket_name | lower }}"
