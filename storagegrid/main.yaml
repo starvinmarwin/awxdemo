@@ -10,5 +10,5 @@
     - include_tasks: tasks/get_all_buckets.yaml
     - include_tasks: tasks/check_duplicate_bucketname.yaml
     - include_tasks: tasks/create_tenant.yaml
-    - include: tasks/create_bucket.yaml
-    - include: tasks/create_keys.yaml
+    - include_tasks: tasks/create_bucket.yaml
+    - include_tasks: tasks/create_keys.yaml
