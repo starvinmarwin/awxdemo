@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  collections:
+    - netapp.storagegrid
+
+  vars:
+    - grid_admin_base_url: "https://10.5.162.121/"
+ 
+  tasks:
+    - include: tasks/get_all_buckets.yaml
+    - include: tasks/check_duplicate_bucketname.yaml
+    - include: tasks/build_dns_name.yaml
+    - include: tasks/create_tenant.yaml
+    - include: tasks/create_bucket.yaml
+    - include: tasks/create_keys.yaml
+    - include: tasks/create_dns_record.yaml
+    - include: tasks/report_job_status.yaml
+    - include: tasks/send_mail.yaml
