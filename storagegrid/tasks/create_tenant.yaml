@@ -21,7 +21,6 @@
     name: "{{ app_id | default('s3aaS-no-appid') }}-{{ bucket_name }}"
     protocol: s3
     management: true
-    comment: "Martin"
     use_own_identity_source: false
     allow_platform_services: false
     password: "{{ storagegrid_login_password }}"
