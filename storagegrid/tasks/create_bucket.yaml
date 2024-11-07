@@ -19,5 +19,5 @@
     api_url: "{{ grid_admin_base_url }}"
     auth_token: "{{ auth.json.data }}"
     state: present
-    region: eu-swe-1
+    region: us-east-1
     name: "{{ bucket_name | lower }}"
