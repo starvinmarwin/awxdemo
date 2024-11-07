@@ -1,0 +1,38 @@
+- name: Get grid authorization token
+  uri:
+    url: "{{ grid_admin_base_url }}/api/v3/authorize"
+    method: POST
+    body: {
+      "username": "{{ sg_username }}",
+      "password": "{{ sg_password }}",
+      "cookie": false,
+      "csrfToken": false
+    }
+    body_format: json
+    validate_certs: false
+  register: auth
+
+- name: Create a StorageGRID Tenant based on Servicenow request
+  na_sg_grid_account:
+    api_url: "{{ grid_admin_base_url }}"
+    auth_token: "{{ auth.json.data }}"
+    validate_certs: false
+    state: present
+    name: "{{ app_id | default('s3aaS-no-appid') }}-{{ app_environment }}-{{ bucket_name }}"
+    protocol: s3
+    management: true
+    comment: "{{ requester_name }} : {{ requester_email }}"
+    use_own_identity_source: false
+    allow_platform_services: false
+    password: "{{ storagegrid_login_password }}"
+    quota_size: "{{ quota_size }}"
+    quota_size_unit: gb
+  register: account
+    
+- name: Show the Tenant ID
+  set_fact:
+    tenant_id: "{{ account.resp.id }}"
+
+- name: Show the Tenant ID
+  set_fact:
+    tenant_namn: "{{ account.resp.name }}"
