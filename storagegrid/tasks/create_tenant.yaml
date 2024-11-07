@@ -18,10 +18,10 @@
     auth_token: "{{ auth.json.data }}"
     validate_certs: false
     state: present
-    name: "{{ app_id | default('s3aaS-no-appid') }}-{{ app_environment }}-{{ bucket_name }}"
+    name: "{{ app_id | default('s3aaS-no-appid') }}-{{ bucket_name }}"
     protocol: s3
     management: true
-    comment: "{{ requester_name }} : {{ requester_email }}"
+    comment: "Martin"
     use_own_identity_source: false
     allow_platform_services: false
     password: "{{ storagegrid_login_password }}"
