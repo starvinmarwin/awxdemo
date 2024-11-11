@@ -22,6 +22,7 @@
     expires: "{{ ansible_date_time.year | int + 3 }}-{{ ansible_date_time.month }}-{{ ansible_date_time.day }}T{{ ansible_date_time.time }}"
     unique_user_name: user/user1
   register: keys
+  no_log: true
     
 - name: Set the accesskey ID
   set_fact:
