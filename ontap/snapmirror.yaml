@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  collections:
+  - netapp.ontap
+  module_defaults:
+    group/netapp.ontap.netapp_ontap:
+      hostname: "{{ ontap_system }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+      
+  tasks:
+  - name: Create ONTAP/ONTAP vserver SnapMirror
+    netapp.ontap.na_ontap_snapmirror:
+      state: present
+      source_vserver: ansible_src
+      destination_vserver: ansible_dest
+      identity_preserve: true
+
+  - name: Inititalize ONTAP/ONTAP SnapMirror
+    netapp.ontap.na_ontap_snapmirror:
+      state: present
+      source_path: 'ansible:test'
+      destination_path: 'ansible:dest'
+      relationship_state: active
+
