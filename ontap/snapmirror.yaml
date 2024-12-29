@@ -14,14 +14,14 @@
   - name: Create ONTAP/ONTAP vserver SnapMirror
     netapp.ontap.na_ontap_snapmirror:
       state: present
-      source_vserver: ansible_src
-      destination_vserver: ansible_dest
+      source_vserver: ansibleSVM
+      destination_vserver: semsi
       identity_preserve: true
 
   - name: Inititalize ONTAP/ONTAP SnapMirror
     netapp.ontap.na_ontap_snapmirror:
       state: present
-      source_path: 'ansible:test'
-      destination_path: 'ansible:dest'
+      source_path: 'ansibleSVM:martintest1'
+      destination_path: 'semsi:martintest1_dest'
       relationship_state: active
 
