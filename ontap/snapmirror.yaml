@@ -11,12 +11,12 @@
       validate_certs: false
       
   tasks:
-  - name: Create ONTAP/ONTAP vserver SnapMirror
-    netapp.ontap.na_ontap_snapmirror:
-      state: present
-      source_vserver: ansibleSVM
-      destination_vserver: semsi
-      identity_preserve: true
+  #- name: Create ONTAP/ONTAP vserver SnapMirror
+  #  netapp.ontap.na_ontap_snapmirror:
+  #   state: present
+  #   source_vserver: ansibleSVM
+  #   destination_vserver: semsi
+  #   identity_preserve: true
 
   - name: Inititalize ONTAP/ONTAP SnapMirror
     netapp.ontap.na_ontap_snapmirror:
