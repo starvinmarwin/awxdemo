@@ -11,17 +11,15 @@
       validate_certs: false
       
   tasks:
-  #- name: Create ONTAP/ONTAP vserver SnapMirror
-  #  netapp.ontap.na_ontap_snapmirror:
-  #   state: present
-  #   source_vserver: ansibleSVM
-  #   destination_vserver: semsi
-  #   identity_preserve: true
-
-  - name: Inititalize ONTAP/ONTAP SnapMirror
+  - name: Create SnapMirror relationship (create destination volume)
+    tags: create
     netapp.ontap.na_ontap_snapmirror:
       state: present
-      source_path: 'ansibleSVM:martintest1'
-      destination_path: 'semsi:martintest1_dest'
-      relationship_state: active
-
+      source_endpoint:
+        cluster: "{{ _source_cluster }}"
+        path: "{{ source_vserver + ':' + source_volume }}"
+      destination_endpoint:
+        cluster: "{{ _destination_cluster }}"
+        path: "{{ destination_vserver_VOLDP + ':' + destination_volume }}"
+      create_destination:
+        enabled: true
