@@ -20,6 +20,6 @@
         path: "{{ source_vserver + ':' + source_volume }}"
       destination_endpoint:
         cluster: "{{ _destination_cluster }}"
-        path: "{{ destination_vserver_VOLDP + ':' + destination_volume }}"
+        path: "{{ destination_vserver + ':' + destination_volume }}"
       create_destination:
         enabled: true
