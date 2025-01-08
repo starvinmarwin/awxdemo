@@ -20,6 +20,6 @@
       vserver: "{{ item.vserver }}"
       aggregate_name: "{{ item.aggregate_name }}"
     loop:
-      - { volume: 'vol01', volume_size: '300', volume_size_unit: 'mb', vserver: 'semsi', aggregate_name: 'ssd01' }
+      - { volume: 'vol01', volume_size: '350', volume_size_unit: 'mb', vserver: 'semsi', aggregate_name: 'ssd01' }
       - { volume: 'vol02', volume_size: '400', volume_size_unit: 'mb', vserver: 'semsi', aggregate_name: 'ssd02' }
       - { volume: 'vol03', volume_size: '450', volume_size_unit: 'mb', vserver: 'semsi', aggregate_name: 'ssd02' }
