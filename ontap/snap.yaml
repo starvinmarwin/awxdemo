@@ -16,8 +16,8 @@
       - create
     netapp.ontap.na_ontap_snapshot:
       state: present
-      snapshot: "mittdemosnap"
+      snapshot: "demosnap"
       volume: "vol01"
       comment: "Before upgrade"
-      expiry_time: "2024-07-05T14:00:00-05:00"
+      expiry_time: "2025-07-05T14:00:00-05:00"
       vserver: "semsi"
