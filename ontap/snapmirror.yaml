@@ -14,7 +14,7 @@
   - name: Create SnapMirror relationship (create destination volume)
     tags: create
     netapp.ontap.na_ontap_snapmirror:
-      state: present
+      state: absent
       source_endpoint:
         cluster: "{{ _source_cluster }}"
         path: "{{ source_vserver + ':' + source_volume }}"
