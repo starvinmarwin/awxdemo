@@ -10,9 +10,13 @@
         - members:
           - pwwn: '10:11:11:11:11:11:11:11'
           name: host2
+        - members:
+          - pwwn: '10:12:11:11:11:11:11:11'
+          name: host3
         zoneset:
         - action: activate
           members:
           - name: host1
           - name: host2
+          - name: host3
           name: zone1
