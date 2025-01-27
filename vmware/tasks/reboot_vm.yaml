@@ -1,4 +1,4 @@
-- name: Set the state of a virtual machine to poweroff
+- name: Reboot the virtual machine
   community.vmware.vmware_guest_powerstate:
     name: "{{ guest_name }}"
     state: reboot-guest
