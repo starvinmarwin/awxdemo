@@ -1,5 +1,5 @@
 - name: Reboot the virtual machine
   community.vmware.vmware_guest_powerstate:
     name: "{{ guest_name }}"
-    state: powered-off
+    state: reboot-guest
   delegate_to: localhost
