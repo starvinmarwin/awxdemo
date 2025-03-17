@@ -11,6 +11,18 @@
       validate_certs: false
       
   tasks:
+  - name: create or modify s3 user
+    na_ontap_s3_users:
+      state: present
+      name:
+        - name: martin1
+        - name: martin2
+      vserver: s3svm01
+      comment: not enabled
+      https: true
+      validate_certs: false
+      use_rest: always
+      
   - name: Create and modify a S3 Group
     netapp.ontap.na_ontap_s3_groups:
       state: present
