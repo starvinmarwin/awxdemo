@@ -14,9 +14,7 @@
   - name: create or modify s3 user
     na_ontap_s3_users:
       state: present
-      name:
-        - name: martin1
-        - name: martin2
+      name: martin1
       vserver: s3svm01
       comment: not enabled
       https: true
@@ -31,10 +29,8 @@
       vserver: s3svm01
       users:
         - name: martin1
-        - name: martin2
       policies:
         - name: allow_policy
-        - name: deny_policy
       https: true
       validate_certs: false
       use_rest: always
