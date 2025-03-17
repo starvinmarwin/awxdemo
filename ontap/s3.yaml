@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  collections:
+  - netapp.ontap
+  module_defaults:
+    group/netapp.ontap.netapp_ontap:
+      hostname: "{{ ontap_system }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+      
+  tasks:
+  - name: Create and modify a S3 Group
+    netapp.ontap.na_ontap_s3_groups:
+      state: present
+      name: dev-group
+      comment: group for devs
+      vserver: s3svm01
+      users:
+        - name: martin1
+        - name: martin2
+      policies:
+        - name: allow_policy
+        - name: deny_policy
+      https: true
+      validate_certs: false
+      use_rest: always
