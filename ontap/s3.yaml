@@ -30,7 +30,7 @@
       users:
         - name: martin1
       policies:
-        - name: allow_policy
+        - name: FullAccess
       https: true
       validate_certs: false
       use_rest: always
