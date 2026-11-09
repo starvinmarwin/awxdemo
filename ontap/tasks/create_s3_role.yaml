@@ -1,0 +1,66 @@
+- name: Create S3 policy on SVMs
+  netapp.ontap.na_ontap_s3_policies:
+    state: present
+    name: health-check-policy
+    comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
+    vserver: "{{ item }}"
+    statements:
+      - sid: 1
+        resources:
+          - "health-check-bucket"
+          - "health-check-bucket/*"
+        actions:
+          - "ListBucket"
+          - "GetObject"
+        effect:
+          allow
+  loop: "{{ vserver_groups[target_environment] }}"
+ 
+- name: Create S3 group on SVMs
+  netapp.ontap.na_ontap_s3_groups:
+    state: present
+    name: health-check-group
+    comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
+    vserver: "{{ item }}"
+    users:
+      - name: filecreation
+      - name: filepostprocessing
+      - name: filepreprocessing
+      - name: incomingfiletransfer
+      - name: incomingfilevalidation
+      - name: legacy-file-transfer
+      - name: messagecreation
+      - name: outgoingfiletransfer
+      - name: reporting
+      - name: statistics
+      - name: validationandparsing
+      - name: archiving
+    policies:
+      - name: health-check-policy
+  loop: "{{ vserver_groups[target_environment] }}"
+  when: target_environment in ['prod', 'preprod']
+ 
+- name: Create S3 group on SVMs
+  netapp.ontap.na_ontap_s3_groups:
+    state: present
+    name: health-check-group
+    comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
+    vserver: "{{ item }}"
+    users:
+      - name: file-creation
+      - name: file-post-processing
+      - name: file-pre-processing
+      - name: incoming-file-transfer
+      - name: incoming-file-validation
+      - name: legacy-file-transfer
+      - name: message-creation
+      - name: outgoing-file-transfer
+      - name: reporting
+      - name: statistics
+      - name: validation-and-parsing
+      - name: archiving
+    policies:
+      - name: health-check-policy
+  loop: "{{ vserver_groups[target_environment] }}"
+  when: target_environment in ['test', 'dev']
+ 
