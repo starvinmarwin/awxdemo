@@ -1,0 +1,37 @@
+- name: Create health check buckets in SCT
+  hosts: localhost
+  connection: local
+  gather_facts: false
+ 
+  vars:
+    target_environment: "{{ target_env }}"
+ 
+    vserver_groups:
+      prod:
+        - svm01
+ 
+      preprod:
+        - svm02
+ 
+      test:
+        - svm03
+        - svm04
+        - svm05
+ 
+      dev:
+        - svm06
+        - svm07
+        - svm08
+       
+  module_defaults:
+    group/netapp.ontap.netapp_ontap:
+      https: true
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_username }}"
+      password: "{{ netapp_password }}"
+      validate_certs: false
+      use_rest: Always
+ 
+  tasks:
+    - import_tasks: tasks/create_buckets.yaml
+    - import_tasks: tasks/create_s3_role.yaml
