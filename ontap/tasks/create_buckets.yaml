@@ -1,0 +1,16 @@
+- name: Show selected environment
+  ansible.builtin.debug:
+    msg: "Creating bucket in {{ target_environment }}"
+ 
+- name: Show selected vservers
+  ansible.builtin.debug:
+    var: vserver_groups[target_environment]
+   
+- name: Create S3 bucket on selected environment
+  netapp.ontap.na_ontap_s3_buckets:
+    state: present
+    name: health-check-bucket
+    comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
+    size: 102005473280
+    vserver: "{{ item }}"
+  loop: "{{ vserver_groups[target_environment] }}"
