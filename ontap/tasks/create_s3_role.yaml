@@ -12,7 +12,6 @@
     vserver: "{{ item }}"
   loop: "{{ vserver_groups[target_environment] }}"
 
-
 - name: Create S3 policy on SVMs
   netapp.ontap.na_ontap_s3_policies:
     state: present
