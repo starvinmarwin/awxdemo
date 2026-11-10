@@ -16,51 +16,33 @@
           allow
   loop: "{{ vserver_groups[target_environment] }}"
  
-- name: Create S3 group on SVMs
+- name: Create S3 group on SVMs for Prod
   netapp.ontap.na_ontap_s3_groups:
     state: present
-    name: health-check-group
+    name: martin-demo-group-prod
     comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
     vserver: "{{ item }}"
     users:
-      - name: filecreation
-      - name: filepostprocessing
-      - name: filepreprocessing
-      - name: incomingfiletransfer
-      - name: incomingfilevalidation
-      - name: legacy-file-transfer
-      - name: messagecreation
-      - name: outgoingfiletransfer
-      - name: reporting
-      - name: statistics
-      - name: validationandparsing
-      - name: archiving
+      - name: user1
+      - name: user2
     policies:
-      - name: health-check-policy
+      - name: martin-demo-policy-prod
   loop: "{{ vserver_groups[target_environment] }}"
-  when: target_environment in ['prod', 'preprod']
+  when: target_environment in ['prod']
  
-- name: Create S3 group on SVMs
+- name: Create S3 group on SVMs for Test
   netapp.ontap.na_ontap_s3_groups:
     state: present
-    name: health-check-group
+    name: martin-demo-group-test
     comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
     vserver: "{{ item }}"
     users:
-      - name: file-creation
-      - name: file-post-processing
-      - name: file-pre-processing
-      - name: incoming-file-transfer
-      - name: incoming-file-validation
-      - name: legacy-file-transfer
-      - name: message-creation
-      - name: outgoing-file-transfer
-      - name: reporting
-      - name: statistics
-      - name: validation-and-parsing
-      - name: archiving
+      - name: user1
+      - name: user2
+      - name: user3
+
     policies:
-      - name: health-check-policy
+      - name: martin-demo-policy-test
   loop: "{{ vserver_groups[target_environment] }}"
   when: target_environment in ['test', 'dev']
  
