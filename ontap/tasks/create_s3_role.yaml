@@ -15,7 +15,7 @@
 - name: Create S3 policy on SVMs
   netapp.ontap.na_ontap_s3_policies:
     state: present
-    name: health-check-policy
+    name: martin-demo-policy-prod
     comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
     vserver: "{{ item }}"
     statements:
