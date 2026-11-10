@@ -7,8 +7,8 @@
     statements:
       - sid: 1
         resources:
-          - "health-check-bucket"
-          - "health-check-bucket/*"
+          - "martin-demo-bucket"
+          - "martin-demo-bucket/*"
         actions:
           - "ListBucket"
           - "GetObject"
