@@ -1,4 +1,4 @@
-- name: Create health check buckets in Netapp Ontap
+- name: Create buckets, users, groups and policies in Netapp Ontap
   hosts: localhost
   connection: local
   gather_facts: false
