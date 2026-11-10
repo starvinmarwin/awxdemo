@@ -53,8 +53,6 @@
     users:
       - name: user1
       - name: user2
-      - name: user3
-
     policies:
       - name: martin-demo-policy-test
   loop: "{{ vserver_groups[target_environment] }}"
