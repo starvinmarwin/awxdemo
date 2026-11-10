@@ -9,7 +9,7 @@
 - name: Create S3 bucket on selected environment
   netapp.ontap.na_ontap_s3_buckets:
     state: present
-    name: health-check-bucket
+    name: martin-sisth-demo
     comment: Created by Ansible "{{ lookup('ansible.builtin.pipe', 'date +%Y-%m-%d') }}"
     size: 102005473280
     vserver: "{{ item }}"
